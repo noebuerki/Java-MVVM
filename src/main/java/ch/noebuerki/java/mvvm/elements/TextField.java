@@ -1,7 +1,7 @@
-package ch.noebuerki.gui.items;
+package ch.noebuerki.java.mvvm.elements;
 
-import ch.noebuerki.gui.general.Point;
-import ch.noebuerki.gui.general.sizes.TextFieldSize;
+import ch.noebuerki.java.mvvm.general.Point;
+import ch.noebuerki.java.mvvm.general.sizes.TextFieldSize;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,8 +19,13 @@ public class TextField extends AnchorPane {
 	private static final String font = TextField.class.getResource("/font/LexendDeca-Regular.ttf").toExternalForm();
 	private final javafx.scene.control.TextField textField;
 	private final Text alarm;
-	public boolean isValid;
 	private final double x;
+	public boolean isValid;
+
+	public TextField(String placeHolder, TextFieldSize textFieldSize, Point point, EventHandler<ActionEvent> eventHandler) {
+		this(placeHolder, textFieldSize, point);
+		setOnAction(eventHandler);
+	}
 
 	public TextField(String placeHolder, TextFieldSize textFieldSize, Point point) {
 		Rectangle background;
@@ -52,33 +57,8 @@ public class TextField extends AnchorPane {
 		getChildren().addAll(background, textField, alarm);
 	}
 
-	public TextField(String placeHolder, TextFieldSize textFieldSize, Point point, EventHandler<ActionEvent> eventHandler) {
-		this(placeHolder, textFieldSize, point);
-		setOnAction(eventHandler);
-	}
-
-	public void setText(String text) {
-		removeAlarm();
-		textField.setText(text);
-	}
-
-	public String getText() {
-		return textField.getText();
-	}
-
 	public void setOnAction(EventHandler<ActionEvent> value) {
 		textField.setOnAction(value);
-	}
-
-	public javafx.scene.control.TextField getTextField() {
-		return textField;
-	}
-
-	public void setAlarm() {
-		alarm.setVisible(true);
-		isValid = false;
-		textField.setMinWidth(textField.getMinWidth() - 20);
-		textField.setMaxWidth(textField.getMaxWidth() - 20);
 	}
 
 	public void removeAlarm() {
@@ -88,12 +68,32 @@ public class TextField extends AnchorPane {
 		textField.setMaxWidth(textField.getMaxWidth() + 20);
 	}
 
+	public javafx.scene.control.TextField getTextField() {
+		return textField;
+	}
+
 	public void toggleAlarmOnNoPatternMatch(String pattern) {
 		if (Pattern.matches(pattern, getText())) {
 			removeAlarm();
 		} else {
 			setAlarm();
 		}
+	}
+
+	public String getText() {
+		return textField.getText();
+	}
+
+	public void setText(String text) {
+		removeAlarm();
+		textField.setText(text);
+	}
+
+	public void setAlarm() {
+		alarm.setVisible(true);
+		isValid = false;
+		textField.setMinWidth(textField.getMinWidth() - 20);
+		textField.setMaxWidth(textField.getMaxWidth() - 20);
 	}
 
 	public void reset() {

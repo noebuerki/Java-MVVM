@@ -1,4 +1,4 @@
-package ch.noebuerki.gui.general;
+package ch.noebuerki.java.mvvm.general;
 
 public class Point {
 

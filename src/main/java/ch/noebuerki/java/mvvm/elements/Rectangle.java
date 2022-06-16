@@ -1,6 +1,6 @@
-package ch.noebuerki.gui.items;
+package ch.noebuerki.java.mvvm.elements;
 
-import ch.noebuerki.gui.general.Point;
+import ch.noebuerki.java.mvvm.general.Point;
 import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -17,5 +17,4 @@ public class Rectangle extends Region {
 		setLayoutX(point.getX());
 		setLayoutY(point.getX());
 	}
-
 }

@@ -1,12 +1,17 @@
-package ch.noebuerki.gui.items;
+package ch.noebuerki.java.mvvm.elements;
 
-import ch.noebuerki.gui.Constants;
-import ch.noebuerki.gui.general.Point;
+import ch.noebuerki.java.mvvm.Constants;
+import ch.noebuerki.java.mvvm.general.Point;
 
 public class Progressbar extends javafx.scene.control.ProgressBar {
 
-	private int maxValue;
 	private static double x = 0;
+	private int maxValue;
+
+	public Progressbar(int maxValue, Point point) {
+		this(point);
+		this.maxValue = maxValue;
+	}
 
 	public Progressbar(Point point) {
 		super(0);
@@ -19,11 +24,6 @@ public class Progressbar extends javafx.scene.control.ProgressBar {
 		setMinHeight(60);
 		setMaxWidth(Constants.WINDOW_WIDTH / 2d);
 		setMaxHeight(60);
-	}
-
-	public Progressbar(int maxValue, Point point) {
-		this(point);
-		this.maxValue = maxValue;
 	}
 
 	public void setValue(int value) {

@@ -1,13 +1,13 @@
-package ch.noebuerki.gui.items;
+package ch.noebuerki.java.mvvm.elements;
 
-import ch.noebuerki.gui.general.Point;
+import ch.noebuerki.java.mvvm.general.Point;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Text extends javafx.scene.text.Text {
 
-	private static double x = 0;
 	private static final String font = Text.class.getResource("/font/LexendDeca-Regular.ttf").toExternalForm();
+	private static double x = 0;
 
 	public Text(String text, int size, Color color, Point point) {
 		this(text, size, point);
@@ -34,6 +34,6 @@ public class Text extends javafx.scene.text.Text {
 	}
 
 	public void setPositionAsRight() {
-		setLayoutX(x -getLayoutBounds().getWidth());
+		setLayoutX(x - getLayoutBounds().getWidth());
 	}
 }

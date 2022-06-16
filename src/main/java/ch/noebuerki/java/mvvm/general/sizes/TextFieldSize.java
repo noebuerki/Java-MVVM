@@ -1,4 +1,4 @@
-package ch.noebuerki.gui.general.sizes;
+package ch.noebuerki.java.mvvm.general.sizes;
 
 public enum TextFieldSize implements Size {
 	SMALL(290, 45),
